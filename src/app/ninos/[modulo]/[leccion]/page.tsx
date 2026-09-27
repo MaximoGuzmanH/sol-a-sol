@@ -60,7 +60,7 @@ export default async function PaginaLeccion({ params }: { params: Params }) {
             Volver al módulo
           </Link>
         )}
-        <details className="mt-6 text-texto-suave">
+        <details className="mt-6 text-lg text-texto-suave">
           <summary className="cursor-pointer font-semibold">Fuentes</summary>
           <ul className="mt-2 list-disc pl-6">
             {leccion.fuentes.map((fuente) => (
