@@ -1,0 +1,16 @@
+export function Vicu({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 64 64" className={className} aria-hidden="true" focusable="false">
+      <path d="M20 14 L24 2 L28 14 Z" fill="#c8894b" />
+      <path d="M36 14 L40 2 L44 14 Z" fill="#c8894b" />
+      <path d="M22 34 Q20 52 24 62 L40 62 Q44 52 42 34 Z" fill="#d9a066" />
+      <path d="M27 40 Q26 52 28 62 L36 62 Q38 52 37 40 Z" fill="#fbf3e6" />
+      <ellipse cx="32" cy="24" rx="14" ry="13" fill="#d9a066" />
+      <ellipse cx="32" cy="31" rx="8" ry="6" fill="#f4e1c6" />
+      <circle cx="26" cy="22" r="2.2" fill="#2b1b10" />
+      <circle cx="38" cy="22" r="2.2" fill="#2b1b10" />
+      <ellipse cx="32" cy="29" rx="2" ry="1.3" fill="#2b1b10" />
+      <path d="M28.5 33 Q32 36 35.5 33" stroke="#2b1b10" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+    </svg>
+  );
+}

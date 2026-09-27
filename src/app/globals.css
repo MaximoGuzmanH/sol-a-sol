@@ -1,26 +1,59 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-fondo: #fff8ee;
+  --color-superficie: #ffffff;
+  --color-texto: #2b1b10;
+  --color-texto-suave: #5c4633;
+  --color-primario: #b2381f;
+  --color-primario-oscuro: #8c2a16;
+  --color-acento: #e0a020;
+  --color-exito: #2e7d4f;
+  --color-exito-suave: #e3f2e8;
+  --color-aviso-suave: #fdf0d5;
+  --color-borde: #ead9c2;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-nunito), ui-rounded, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:focus-visible {
+  outline: 3px solid var(--color-primario);
+  outline-offset: 2px;
+}
+
+.leccion > * + * {
+  margin-top: 1.25rem;
+}
+.leccion p,
+.leccion li {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+.leccion ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+.leccion ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+}
+.leccion h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+.leccion strong {
+  font-weight: 800;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
