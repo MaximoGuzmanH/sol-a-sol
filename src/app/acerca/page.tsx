@@ -36,7 +36,7 @@ export default function Acerca() {
 
       <h2>Importante</h2>
       <p>
-        Sol a Sol es un proyecto educativo: <strong>no es asesoría financiera</strong>. Para decisiones sobre tu dinero, consulta con una entidad supervisada por la SBS.
+        Sol a Sol es un proyecto educativo: <strong>no es asesoría financiera</strong>. Para decisiones sobre tu dinero, consulta los canales de orientación gratuita de la SBS (www.sbs.gob.pe).
       </p>
 
       <h2>Tu privacidad</h2>
