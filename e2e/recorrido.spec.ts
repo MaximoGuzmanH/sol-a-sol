@@ -6,6 +6,8 @@ test("la portada ofrece Niños y anuncia los demás grupos", async ({ page }) =>
   await expect(page.getByText("Próximamente")).toHaveCount(2);
 });
 
+// Este test depende del texto exacto del <Quiz> de contenido/ninos/03-ahorrar/01-el-chanchito.mdx
+// (pregunta y opciones); si se edita esa lección, hay que actualizar los selectores de abajo.
 test("un niño completa una lección y ve su avance al volver", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("link", { name: /Niños/ }).click();

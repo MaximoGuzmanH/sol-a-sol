@@ -63,8 +63,8 @@ export default async function PaginaLeccion({ params }: { params: Params }) {
         <details className="mt-6 text-lg text-texto-suave">
           <summary className="cursor-pointer font-semibold">Fuentes</summary>
           <ul className="mt-2 list-disc pl-6">
-            {leccion.fuentes.map((fuente) => (
-              <li key={fuente}>{fuente}</li>
+            {leccion.fuentes.map((fuente, i) => (
+              <li key={`${i}-${fuente}`}>{fuente}</li>
             ))}
           </ul>
         </details>

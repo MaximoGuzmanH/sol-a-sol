@@ -113,3 +113,21 @@ describe("obtenerModulo / obtenerLeccion", () => {
     expect(obtenerLeccion("ninos", "ahorrar", "otra", base)).toBeUndefined();
   });
 });
+
+describe("contenido real de contenido/ninos", () => {
+  it("carga sin lanzar: 3 módulos, 8 lecciones en total, ids únicos y fuentes con URL http", () => {
+    const modulos = obtenerModulos("ninos");
+    expect(modulos).toHaveLength(3);
+
+    const lecciones = modulos.flatMap((m) => m.lecciones);
+    expect(lecciones).toHaveLength(8);
+
+    const ids = lecciones.map((l) => l.id);
+    expect(new Set(ids).size).toBe(ids.length);
+
+    for (const l of lecciones) {
+      expect(l.fuentes.length).toBeGreaterThan(0);
+      for (const fuente of l.fuentes) expect(fuente).toMatch(/https?:\/\//);
+    }
+  });
+});
