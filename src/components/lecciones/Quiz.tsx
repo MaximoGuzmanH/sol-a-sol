@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { marcarCompletada } from "@/lib/progreso";
 import type { PropsQuiz } from "@/lib/quiz";
 
@@ -8,13 +8,20 @@ type Props = PropsQuiz & { leccionId: string };
 
 export function Quiz({ pregunta, opciones, correcta, explicacion, leccionId }: Props) {
   const [elegida, setElegida] = useState<number | null>(null);
+  const [intentos, setIntentos] = useState(0);
   const idPregunta = useId();
   const acerto = elegida === correcta;
+  const refFeedback = useRef<HTMLParagraphElement>(null);
 
   function responder(indice: number) {
     setElegida(indice);
+    setIntentos((n) => n + 1);
     if (indice === correcta) marcarCompletada(leccionId);
   }
+
+  useEffect(() => {
+    if (acerto) refFeedback.current?.focus();
+  }, [acerto]);
 
   return (
     <section aria-labelledby={idPregunta} className="rounded-3xl border-2 border-primario/30 bg-superficie p-5">
@@ -48,9 +55,13 @@ export function Quiz({ pregunta, opciones, correcta, explicacion, leccionId }: P
       <div aria-live="polite" className="mt-4 min-h-8 text-lg">
         {elegida !== null &&
           (acerto ? (
-            <p className="font-bold text-exito">¡Muy bien! 🎉 {explicacion}</p>
+            <p key={intentos} ref={refFeedback} tabIndex={-1} className="font-bold text-exito outline-none">
+              ¡Muy bien! 🎉 {explicacion}
+            </p>
           ) : (
-            <p className="font-bold text-primario-oscuro">¡Casi! Esa no es. Intenta con otra opción 💪</p>
+            <p key={intentos} className="font-bold text-primario-oscuro">
+              ¡Casi! Esa no es. Intenta con otra opción 💪
+            </p>
           ))}
       </div>
     </section>

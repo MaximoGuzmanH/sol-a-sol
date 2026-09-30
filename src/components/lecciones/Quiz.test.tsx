@@ -43,4 +43,19 @@ describe("Quiz", () => {
     expect(completadas()).toEqual(["ninos/ahorrar/el-chanchito"]);
     for (const boton of screen.getAllByRole("button")) expect(boton).toBeDisabled();
   });
+
+  it("al acertar, mueve el foco al mensaje de felicitación (no se pierde en el body)", async () => {
+    render(<Quiz {...props} />);
+    await userEvent.click(screen.getByRole("button", { name: "Guardar una parte" }));
+    expect(screen.getByText(/¡Muy bien!/)).toHaveFocus();
+  });
+
+  it("anuncia un segundo error aunque el mensaje sea el mismo texto", async () => {
+    render(<Quiz {...props} />);
+    await userEvent.click(screen.getByRole("button", { name: "Gastarlo todo" }));
+    const primerMensaje = screen.getByText(/¡Casi!/);
+    await userEvent.click(screen.getByRole("button", { name: "Perderlo" }));
+    const segundoMensaje = screen.getByText(/¡Casi!/);
+    expect(segundoMensaje).not.toBe(primerMensaje);
+  });
 });
